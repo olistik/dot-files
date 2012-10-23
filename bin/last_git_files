@@ -1,0 +1,5 @@
+#!/bin/bash
+
+last_commits=$1
+
+git log -n $last_commits --name-status | rbenv exec ruby -e 'puts STDIN.read.scan(/^\w\s+(.*)$/).uniq'

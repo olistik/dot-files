@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+require 'yaml'
+require 'fileutils'
+
+filename = FileUtils.pwd + '/.env'
+exit if File.exists?(filename)
+content = YAML.load_file(filename)
+content.each do |key, value|
+  puts "setting: #{key} -> #{value}"
+end
+

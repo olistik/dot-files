@@ -1,0 +1,8 @@
+#!/bin/bash
+
+application=$1
+CPUPROFILE_OBJECTS=1 CPUPROFILE_METHODS=1 CPUPROFILE=app_profile RUBYOPT="-r`gem which perftools | tail -1`" $application
+pprof.rb --gif app_profile > app_profile.gif
+pprof.rb --text app_profile > app_profile.txt
+rm app_profile
+rm app_profile.symbols

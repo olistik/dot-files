@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Unstage files staged with 'git rm'.
+deletion_list=$(git status | grep deleted: | cut -c 15-)
+for file in $deletion_list; do
+  git reset HEAD $file
+done

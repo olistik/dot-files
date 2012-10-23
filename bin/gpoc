@@ -1,0 +1,4 @@
+#!/bin/bash
+
+current_branch_name=$(git_branch)
+git push origin $current_branch_name

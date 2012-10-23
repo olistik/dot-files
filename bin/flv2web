@@ -1,0 +1,14 @@
+#!/bin/bash
+
+ipad_preset_path="/Applications/Miro Video Converter.app/Contents/Resources/ffmpeg_presets/libx264-ipod640.ffpreset"
+
+for filename in *.flv
+do
+  echo "Converting video: $filename ... "
+  echo "Converting to mp4 ..."
+  ffmpeg -i "$filename" -threads 0 -strict experimental -f mp4 -vcodec libx264 -vpre slow -fpre "$ipad_preset_path" -b 1200k -acodec aac -ab 160000 -ac 2 "${filename%.*}.mp4"
+  echo "Done."
+  # echo "Converting to webm ..."
+  # ffmpeg -i "$filename" -f webm -vcodec libvpx -acodec libvorbis -ab 160000 -crf 22 "${filename%.*}.webm"
+  # echo "Done."
+done
